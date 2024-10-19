@@ -4,21 +4,38 @@ let perguntaAtual = 0;
 let pontuacao = 0;
 
 function mostrarPontuacao() {
-    document.querySelector('.container').style.display = 'none';
-    document.querySelector('.endGame').style.display = 'block';
-    document.getElementById('pontuacao-valor').textContent = pontuacao;
+    const container = document.querySelector('.container');
+    const endGame = document.querySelector('.endGame');
+    const pontuacaoValor = document.getElementById('pontuacao-valor');
+
+    if (container && endGame && pontuacaoValor) {
+        container.style.display = 'none';
+        endGame.style.display = 'block';
+        pontuacaoValor.textContent = pontuacao;
+    } else {
+        console.error('Elementos necessários não encontrados no DOM.');
+    }
 }
 
 function recomecarQuiz() {
     perguntaAtual = 0;
     pontuacao = 0;
     mostrarPerguntas(perguntaAtual);
-    document.querySelector('.container').style.display = 'block';
-    document.querySelector('.endGame').style.display = 'none';
-    document.querySelectorAll('.pergunta input[type="button"]').forEach(botao => {
-        botao.style.backgroundColor = '';
-        botao.disabled = false;
-    });
+
+    const container = document.querySelector('.container');
+    const endGame = document.querySelector('.endGame');
+
+    if (container && endGame) {
+        container.style.display = 'block';
+        endGame.style.display = 'none';
+
+        document.querySelectorAll('.pergunta input[type="button"]').forEach(botao => {
+            botao.style.backgroundColor = '';
+            botao.disabled = false;
+        });
+    } else {
+        console.error('Elementos necessários não encontrados no DOM.');
+    }
 }
 
 function mostrarPerguntas(numero) {

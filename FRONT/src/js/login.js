@@ -44,5 +44,6 @@ document.getElementById('loginForm')?.addEventListener('submit', async function(
         body: JSON.stringify({ email, password}),
     }) 
     const data = await response.json();
-    alert(data.message);
+    
+    window.location.href = "../login-user/home2.html"//A DESGRAÇA DO REDIRECIONAMENTO
 })
